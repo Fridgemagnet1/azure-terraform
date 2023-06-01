@@ -16,6 +16,9 @@ jobs:
           uses: hashicorp/setup-terraform@v1
           with:
             terraform_version: 1.4.6
+          
+        - name: terraform version
+          run: echo "terraform version"
         
         - name: Configure Azure Credentials
           uses: azure/login@v1.4.6
