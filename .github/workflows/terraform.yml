@@ -1,0 +1,37 @@
+name: Terraform Deployment
+
+on:
+  push:
+    branches:
+        - master
+
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+    steps:
+        - name: Checkout code
+          uses: actions/checkout@v2
+
+        - name: Set up terraform
+          uses: hashicorp/setup-terraform@v1
+          with:
+            terraform_version: 1.4.6
+        
+        - name: Configure Azure Credentials
+          uses: azure/login@v1
+          with:
+            creds: ${{ secrets.AZURE_CREDENTIALS }}
+        
+        - name: Format Terraform
+          run: terraform fmt -check=true - recursive
+        
+        - name: Terraform Validate
+          run: terraform validate
+        
+        - name: Terraform Plan
+          run: terraform plan -out=tfplan
+        
+        - name: Terraform apply 
+          uses: terraform apply -auto-approve tfplan
+          
+      
