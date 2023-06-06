@@ -22,7 +22,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
  
-      - uses: az/login@v1
+      - uses: azure/login@v1
         with:
           client-id: ${{ secrets.AZURE_CLIENT_ID }}
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
