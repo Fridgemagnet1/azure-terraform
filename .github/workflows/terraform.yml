@@ -3,7 +3,7 @@ name: Terraform deployment
 on:
   # Triggers the workflow on push or pull request events but only for the "sam_lab" branch
   push:
-    branches: [ "sam_lab" ]
+    branches: [ "main" ]
     # paths:
     #   - "src/**"
       # - ".github/workflows/uat.yml"
