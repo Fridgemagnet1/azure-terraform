@@ -10,10 +10,10 @@ resource "azurerm_resource_group" "rg" {
 # Remote backend
 terraform {
   backend "azurerm" {
-    resource_group_name = "terraform-storage-rg"
-    storage_account_name = "terraformstatesh123"
-    container_name = "tfstatefiles"
-    key = "terraform.tfstate"
+    resource_group_name = "attempt200"
+    storage_account_name = "justwork1013"
+    container_name = "terraformstate"
+    key = "1/6dKh6lXqPNxW6mK4s73oMK2keH1ILSntCFrUjygKW5AyD4exIWs1/inFRH5flMUFzxlksva9Qf+AStW8Yyaw=="
   }
 }
 
@@ -32,4 +32,12 @@ terraform {
       version = ">=3.0.0"
     }
   }
+}
+
+data "azurerm_client_config" "current" {}
+ 
+#Create Resource Group
+resource "azurerm_resource_group" "rgsa" {
+  name     = "<resourcegroup1-name>"
+  location = "eastus2"
 }
